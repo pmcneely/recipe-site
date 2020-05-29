@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ recipe.title }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <img src="{% static recipe.dish_image %}" alt="" width="100%">
+    </div>
+    <div class="col-md-4">
+        <h5>Ingredients in the recipe:</h5>
+        <script>
+            var jsonObject = JSON.parse('{{ ingredients | escapejs }}');
+        </script>
+        <br>
+        <h5>Steps to make the recipe:</h5>
+        <p>{{ recipe.steps }}</p>
+    </div>
+</div>
+{% endblock %}
